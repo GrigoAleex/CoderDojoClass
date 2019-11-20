@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form-Area</title>
+</head>
+<body>
+    <style>
+         @import url('https://fonts.googleapis.com/css?family=Candal|Teko&display=swap');
+
+        :root{
+            --background-color: #4074A0;
+            --shadow-color: #245A80;
+            --input-background-color: #6C9AC0;
+            --available-submit: #295B80;
+            --unavailable-submit: rgb(14, 43, 65);
+        }
+
+        body,html{
+            margin: 0; 
+            padding: 0;
+            background-color: var(--background-color);
+            display: flex;
+            align-items: center;
+            min-height: 24em;
+            justify-content: center;
+            height: -webkit-fill-available;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .text{
+            text-align: center;
+            line-height: 1;
+        }
+        h1{
+            color: white;
+            font-family: 'Teko', sans-serif;
+            text-shadow: 2.5px 4.3px var(--shadow-color);
+            margin: 0;
+            font-size: 82px;
+        }
+        h3{
+            color: var(--available-submit);
+            font-family: 'Candal', sans-serif;
+            margin: 0;
+            font-size: 17   px;
+        }
+        #buttons{
+            width: 80%;
+        }
+        button{
+            background: var(--available-submit);
+            padding: 0 20px;
+            color: #fff;
+            font-size: 24px;
+            font-family: 'Teko', sans-serif;
+            border: none;
+            border-radius: 3px;
+            height: auto;
+            width: auto;
+            box-shadow: 5px 5px 5px var(--shadow-color);
+        }
+        button:last-child{
+            float: right;
+        }
+        #showForm{
+            position: absolute;
+            width: 40%;
+            height: 30%;
+            background: var(--background-color);
+            display: inline-grid;
+            transform: translateY(-35%);
+            display: none;
+        }
+        .label{
+            display: flex;
+            align-items: center;
+        }
+        .label > label{
+            color: #fff;
+            font-family: 'Candal', sans-serif;
+            margin-right: 10px;
+        }
+        .label > p{
+            font-family: 'Candal', sans-serif;
+            color: #383838;
+        }
+        form{
+            display: contents;
+        }
+    </style>
+
+    <div id="container">
+        <div class="text">
+            <h1>Have a good day!</h1>
+            <h3></h3>
+        </div>
+        <br>
+        <div id="buttons">
+            <button onclick="showForm();" value="Preview" id="preview">Open preview</button>
+            <form action="index.html">
+                    <button onclick="window.top.close();">Close tab</button>
+            </form>
+        </div>
+    </div>
+    <div id="showForm">
+        <div class="label">
+            <label>Your E-mail:</label>
+            <p></p>
+        </div>
+        <div class="label">
+            <label>Subject:</label>
+            <p></p>
+        </div>
+        <div class="label">
+            <label>Message:</label>
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        var urlString = window.location.search;
+        var colors =   ['#5FABED', '#7B98B0', '#A6CCED', '#4074A0', '#2C4F6E', //albastru
+                        '#E67E22', '#66380F', '#EAA569', '#B3621B', '#66482E', //portocaliu
+                        '#2ECC71', '#124D2A', '#B7DDC7', '#239954', '#294D38', //verde
+                        '#E74C3C', '#693F3B', '#EC8E84', '#B53C2F', '#69231B', //rosu
+                        '#F1C40F', '#736429', '#F7E6A3', '#BF9B0B', '#735D07', //galben 
+                        '#8E44AD', '#AA81BB', '#E3ACFA', '#CC61FA', '#64307A'  //mov
+                        ];
+        var attributes =['--background-color', '--shadow-color', '--input-background-color', '--available-submit', '--unavailable-submit']
+        var randomRange = colors.length / 5;
+
+        getRandomInt = (max) => {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+        window.onload = () => {
+            var params = new URLSearchParams(urlString);
+            var title = document.getElementsByTagName('h3');
+            var firstTitle = title[0];
+
+            // var random = getRandomInt(randomRange);
+            var bodyColour = params.getAll('colour');
+            let root = document.documentElement;
+            if(bodyColour == 'blue') var colour = 0;
+            else if(bodyColour == 'orange') var colour = 1;
+            else if(bodyColour == 'green') var colour = 2;
+            else if(bodyColour == 'red') var colour = 3;
+            else if(bodyColour == 'yellow') var colour = 4;
+            else if(bodyColour == 'purple') var colour = 5;
+
+            for(let i = 1 ; i <= 5; i++)
+                root.style.setProperty(attributes[i - 1], colors[5 * colour + i - 1]);
+            firstName = params.getAll('full-name');
+            firstTitle.innerHTML = (firstName + ", go home and relax!").toUpperCase();
+        }
+        showForm = () => {
+            var button = document.getElementById("preview");
+            var div = document.getElementById("showForm");
+
+            if (button.innerHTML == "Open preview"){
+                button.innerHTML = "Close preview"
+                div.style.display = "block"; 
+            }
+            else {
+                button.innerHTML = "Open preview";
+                div.style.display = "none"; 
+            }
+            
+            var params = new URLSearchParams(urlString);
+            var container = document.getElementsByTagName('p');
+            var message = params.getAll('message');
+            var eMail = params.getAll('E-mail');
+            var subject = params.getAll('Subject');
+            container[0].innerHTML = eMail;
+            container[1].innerHTML = subject;
+            container[2].innerHTML = message;
+        }
+    </script>
+</body>
+</html>

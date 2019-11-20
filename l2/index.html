@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lectia 2</title>
+</head>
+
+<body>
+    <!-- Wamp instaleaza -->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Candal|Teko&display=swap');
+
+        :root {
+            --background-color: #4074A0;
+            --shadow-color: #245A80;
+            --input-background-color: #6C9AC0;
+            --available-submit: #295B80;
+            --unavailable-submit: rgb(14, 43, 65);
+            --input-font-color: #4e4e4e;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+        }
+
+        #allign {
+            display: flex;
+            align-items: center;
+            min-height: 24em;
+            justify-content: center;
+            height: -webkit-fill-available;
+        }
+
+        #chenar {
+            position: fixed;
+            height: 90%;
+            max-width: 50%;
+            text-align: center;
+            flex: 1;
+            padding: 0 5%;
+        }
+
+        #chenar>h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #f1f1f1;
+            text-shadow: 2.5px 4.3px var(--shadow-color);
+            font-family: 'Candal', sans-serif;
+            margin-top: 0px;
+        }
+
+        #chenar>form>span {
+            float: left;
+        }
+
+        input,
+        textarea, 
+        select,
+        option {
+            background-color: var(--input-background-color);
+            border: 0;
+            border-radius: 1px;
+            width: 60%;
+            height: 38px;
+            margin: 0 0 15px 0;
+            box-shadow: 5px 5px 5px var(--shadow-color);
+        }
+
+        input[type=text],
+        textarea, 
+        select, option {
+            padding: 5px 20px 5px 20px;
+            color: var(--input-font-color);
+            font-size: 18px;
+            font-family: 'Teko', sans-serif;
+        }
+
+        input[type=submit] {
+            background: var(--available-submit);
+            padding: 0 20px;
+            color: #fff;
+            font-size: 32px;
+            font-family: 'Teko', sans-serif;
+            border: none;
+            border-radius: 3px;
+            height: auto;
+            width: auto;
+            box-shadow: 5px 5px 5px var(--shadow-color);
+        }
+
+        input[type=submit]:disabled {
+            background: var(--unavailable-submit);
+        }
+
+        form > p{
+            display: -webkit-inline-flex;
+        }
+
+        form > p >label{
+            font-size: 18px;
+            color: #f1f1f1;
+            /* text-shadow: 2.5px 4.3px var(--shadow-color); */
+            font-family: 'Candal', sans-serif;
+        }
+
+        form > p > select{
+            color: var(--background-color);
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        textarea::-webkit-scrollbar {
+            width: 12px;
+            background-color: var(--background-color);
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: var(--available-submit);
+        }
+
+        ::placeholder {
+            color: var(--background-color);
+            font-size: 18px;
+            font-family: 'Teko', sans-serif;
+        }
+    </style>
+
+
+    <div id="allign">
+        <div id="chenar">
+            <h1>Prosses-Form</h1>
+            <form action="prosses-form.html" method="GET">
+                <input type="text" size="10" name="full-name" placeholder="Full name" />
+                <input type="text" size="10" name="E-mail" placeholder="E-mail" />
+                <p>
+                    <label for="chose">Choose your favorite colour:</label>
+                    <select name="colour">
+                        <option value="blue">Blue</option>
+                        <option value="orange">Orange</option>
+                        <option value="green">Green</option>
+                        <option value="red">Red</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="purple">Purple</option>
+                    </select>
+                </p>
+                <input type="text" size="10" name="Subject" placeholder="Subject" />
+                <textarea name="message" placeholder="Message" id="message"></textarea> <br>
+                <input type="submit" value="Complete forrm" disabled="true" id="submit" />
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        var colors = ['#5FABED', '#7B98B0', '#A6CCED', '#4074A0', '#2C4F6E', '#fff', // albastru
+            '#E67E22', '#66380F', '#EAA569', '#B3621B', '#66482E', '#fff', //portocaliu
+            '#2ECC71', '#124D2A', '#B7DDC7', '#239954', '#294D38', '#4e4e4e', //verde
+            '#E74C3C', '#693F3B', '#EC8E84', '#B53C2F', '#69231B', '#fff', //rosu
+            '#F1C40F', '#736429', '#F7E6A3', '#BF9B0B', '#735D07', '#4e4e4e', // galben
+            '#8E44AD', '#AA81BB', '#E3ACFA', '#CC61FA', '#64307A', '#fff', //mov
+        ];
+        var attributes = ['--background-color', '--shadow-color', '--input-background-color', '--available-submit', '--unavailable-submit', '--input-font-color'];
+        var randomRange = colors.length / 6;
+
+        getRandomInt = (max) => {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+
+        function doCheck() {
+            var allFilled = true;
+            var inputs = document.getElementsByTagName('input');
+            var button = document.getElementById("submit");
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == "text" && inputs[i].value == '') {
+                    allFilled = false;
+                    break;
+                }
+            }
+            if (!button.disabled)
+                button.innerHTML = "Send form";
+            button.disabled = !allFilled;
+
+        }
+
+        window.onload = function () {
+            var inputs = document.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == "text") {
+                    inputs[i].onkeyup = doCheck;
+                    inputs[i].onblur = doCheck;
+                }
+            }
+            var random = getRandomInt(randomRange);
+            let root = document.documentElement;
+            for (let i = 1; i <= 6; i++)
+                root.style.setProperty(attributes[i - 1], colors[6 * random + i - 1]);
+        };
+    </script>
+</body>
+
+</html>
