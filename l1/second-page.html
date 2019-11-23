@@ -4,113 +4,42 @@
 		<title>HTML class</title>
 		<meta charset="UTF-8">
 		<link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<style>
-			body{
-				text-align: center;
-				margin: 0;
-				overflow: hidden;
-				font-family: 'Big Shoulders Display', cursive;
-			}
-			p > span{
-				color: orange;
-			}
-			h2{
-				text-transform: uppercase;
-				margin:.5em;
-				letter-spacing: 12px;
-			}
-			#tabel{
-				text-align: center;
-			}
-			table{
-				display: block;
-				margin: auto auto;
-				max-width: 400px;
-				font-family: 'Quicksand', sans-serif;
-			}
-			th{
-				text-transform: uppercase;
-				color: white;
-				background-color:black;
-				padding: 1em;
-				width: 175px;
-				
-			}
-			td{
-				text-transform: capitalize;
-				font-size: 18px;
-				color: white;
-			}
-			tr:nth-of-type(odd){
-				background-color: blue;
-			}
-			tr:nth-of-type(even){
-				background-color: orangered;
-			}
-			#a{
-				background-color: #010101;
-				color: #F5F5F5;
-				text-transform: uppercase;
-				font-weight: bold;
-				font-size: 12px;
-				letter-spacing: .3px;
-				text-decoration: none;
-				border-radius: 2px;
-				padding: 8px 16px;
-				margin: 8.5px .5em;
-				float: right;
-			}
-			footer{
-				width: 100%;
-				padding: 17px 0px;
-				background-color: #010101;
-				color: #F5F5F5;
-				position: fixed;
-				bottom: 0;
-				width: 100%;
-			}
-			nav{
-				-webkit-box-shadow: 0px 6px 26px -3px rgba(0,0,0,0.75);
-				-moz-box-shadow: 0px 6px 26px -3px rgba(0,0,0,0.75);
-				box-shadow: 0px 6px 26px -3px rgba(0,0,0,0.75);
-				padding: 10px 0;
-			}
-        </style>
-		
-		<nav>
-			<a href="div.html" style="margin: 8.5px 32px 1em .5em;" id="a">Go forward</a>
-			<a href="index.html" id="a" style="margin-right: 0">go back</a>	
-			<a href="index.html"><img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_960_720.png" alt="logo" style="display: block; margin-left: 2em; width: 48px"></a>
-		</nav>
+		<div id="div">
+            <nav>
+                <div id="buttons">
+                    <a href="index.html" id="a">Go backward</a>
+                    <a href="third-page.html" id="a">Go forward</a>	
+                </div>
+                <a href="index.html"><img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_960_720.png" alt="logo"></a>
+            </nav>
+            <div id="tabel">
+                <h2>My beautifull tabel</h2>
 
-		<div id="tabel" style="padding: 174px 0;">
-            <h2>My beautifull tabel</h2>
-            
-			<table>
-				<tr>
-					<th>Coloana unu</th>
-					<th>Coloana doi</th>
-				</tr>
-				<tr>
-					<td>Info unu</td>
-					<td>Info doi</td>
-				</tr>
-				<tr>
-						<td>Info unu</td>
-						<td>Info doi</td>
-				</tr>
-				<tr>
-						<td>Info unu</td>
-						<td>Info doi</td>
-				</tr>
-			</table>
-		</div>
-		
-		<footer>	
-			Thanks for visit!
-		</footer>	
-        
+                <table>
+                    <tr>
+                        <th>Coloana unu</th>
+                        <th>Coloana doi</th>
+                    </tr>
+                    <tr>
+                        <td>Info unu</td>
+                        <td>Info doi</td>
+                    </tr>
+                    <tr>
+                            <td>Info unu</td>
+                            <td>Info doi</td>
+                    </tr>
+                    <tr>
+                            <td>Info unu</td>
+                            <td>Info doi</td>
+                    </tr>
+                </table>
+            </div>
+            <footer>
+                <p>Thanks for visit</p>
+            </footer>
+        </div>
 	</body>	
 </html>

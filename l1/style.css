@@ -1,0 +1,142 @@
+body, html{
+    margin: 0;
+    padding: 0;
+}
+#div{
+    display: flex;
+    flex-direction:column; 
+    align-content: center;
+    justify-content: space-between;
+    font-family: 'Big Shoulders Display', cursive;
+    height: 100vh;
+    width: 100vw;
+}
+nav{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 3em;
+    -webkit-box-shadow: 0px 6px 26px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 6px 26px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 6px 26px -3px rgba(0,0,0,0.75);
+}
+nav > #buttons >#a{
+    background-color: #010101;
+    color: #F5F5F5;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 14px;
+	letter-spacing: .3px;
+	text-decoration: none;
+	border-radius: 2px;
+    padding: 8px 16px;
+}
+nav > a > img{
+    float: left;
+    height: 50px;
+    width:50px;
+}
+p{
+    font-family: 'Quicksand', sans-serif;
+}
+footer{
+    background-color: #010101;
+    color: #F5F5F5;
+    text-align: center;
+}
+
+#container, #tabel{
+    align-self: center;
+    text-align: center;
+}
+#container > p > span:nth-child(odd){
+    color: orange;
+}
+#container > p > span:nth-child(even){
+    color: orange;
+}
+th{
+    text-transform: uppercase;
+	color: white;
+	background-color:black;
+	padding: 1em;
+	width: 175px;
+}
+td{
+    text-transform: capitalize;
+	font-size: 18px;
+	color: white;
+}
+tr:nth-of-type(odd){
+    background-color: blue;
+}
+tr:nth-of-type(even){
+    background-color: orangered;
+}
+#wrapper{
+    width: 60%;
+    align-self: center;
+}
+#personal-data{
+    display: flex;
+    justify-content: space-between;
+}
+#personal-data > div > .label:nth-child(odd){
+    margin-right: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+}
+#description{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    display: inline-block;
+    text-align: justify;
+    margin-top: 2em;
+}
+#description > img{
+    width: 200px;
+    float: left;
+    margin: 0 2em 1em 0 ;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#calculator{
+    display: flex;
+    flex-direction: row;
+}
+#calculator > input{
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+#calculator > p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 0;
+    margin: 0 0 0 1em;
+    align-self: flex-start;
+}
+#calculator > div{
+    display: flex;
+    flex-direction: column;
+}
+#calculator > div > input:first-child{
+    margin-bottom: 10px;
+}
+#container > button{
+    padding:8px 16px;
+    background-color: orangered;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    border: 0;
+}
